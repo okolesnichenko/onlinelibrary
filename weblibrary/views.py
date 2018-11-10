@@ -60,10 +60,10 @@ def book_delete(request, pk, template_name = "weblibrary/delete.html"):
         return redirect('all_lists')
     return render(request, template_name, {"object": book})
 
-def book_find(request, search, template_name = "weblibrary/book_find.html"):
-    person = Author.objects.filter(surname = search)
+def book_find(request, template_name = "weblibrary/book_find.html"):
+    search = request.GET['search']
     books = Book.objects.filter(name = search)
-    books = Book.objects.filter(author = person)
-    if request.method == 'POST':
-        return redirect('all_lists')
-    return render(request, template_name, {'books': books}) 
+    if request.method == 'GET':
+        return render(request, template_name, {'books': books})
+    return redirect('all_lists')    
+     

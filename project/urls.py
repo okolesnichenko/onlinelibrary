@@ -25,5 +25,5 @@ urlpatterns = [
     path('create_book', views.book_create, name = 'book_create'),
     path('edit_book/<int:pk>', views.book_edit, name = 'book_edit'),
     path('delete_book/<int:pk>', views.book_delete, name = 'book_delete'),
-    path('find_book/<str:search>', views.book_find, name = 'book_find'),
+    path('find_book', views.book_find, name = 'book_find'),
 ]

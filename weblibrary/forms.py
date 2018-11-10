@@ -16,3 +16,7 @@ class BookForm(ModelForm):
     class Meta:
         model = Book
         fields = ['name', 'author']
+        labels = {
+            'name': _('Название'),
+            'author':_('Автор'),
+        }
