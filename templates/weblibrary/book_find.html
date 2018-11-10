@@ -1,0 +1,24 @@
+{% extends "weblibrary/base.html" %}
+
+{% block content %}
+
+<h3><a class = "upper" href = "{% url 'all_lists' %}">Список</a></h3>
+
+<h3>Список книг</h3>
+<table>
+  <tr>
+    <th>№ </th>
+    <th>Название </th>
+    <th>Автор </th>
+  </tr>
+  {% for book in books %}
+  <tr>
+    <td>{{ book.id }}</td>
+    <td>{{ book.name }}</td>
+    <td>{{ book.author.name }}</td>
+    <td>{{ book.author.surname }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

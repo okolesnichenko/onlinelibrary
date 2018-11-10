@@ -1,0 +1,24 @@
+body {
+  margin: 15%;
+  font-family: Verdana;
+}
+th, tb{
+  padding: 10px;
+  margin: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+h2{
+  color: navy;
+  font-size: 35px;
+}
+
+div.list{
+  width: 550px;
+  float: left;
+}
+
+a.upper{
+  font-size: 14;
+}

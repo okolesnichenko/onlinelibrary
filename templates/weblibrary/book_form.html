@@ -1,0 +1,13 @@
+{% extends "weblibrary/base.html" %}
+
+{% block content %}
+
+<h3><a class = "upper" href = "{% url 'all_lists' %}">Книги</a>: изменить</h3>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type = "submit" value="Добавить" />
+</form>
+
+{% endblock %}
