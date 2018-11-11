@@ -16,6 +16,7 @@ python/django/sqlite3/crud
 
 <h3>Для просмотра необходимо:</h3>
 <li> В директории (/onlinelibrary) выполнить: >>>python manage.py runserver
+<li> Oleg - суперпользователь. Лоигны и пароли ниже. </li> 
 <li> Так как регистрация не реализована (только в /admin/) вход по:</li>
      логин: Test </br>
      пароль: testuser. </br>
