@@ -16,9 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from weblibrary import views
+from django.conf.urls import url
+from django.contrib import admin
+from django.urls import include
 
 urlpatterns = [
-    path('', views.show_all, name='all_lists'),
+    path('', views.index),
+    path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('all_lists', views.show_all, name='all_lists'),
     path('create_author', views.author_create, name = 'author_create'),
     path('edit_author/<int:pk>', views.author_edit, name = 'author_edit'),
     path('delete_author/<int:pk>', views.author_delete, name = 'author_delete'),

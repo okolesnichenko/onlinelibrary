@@ -6,8 +6,12 @@ from .forms import BookForm
 from .models import Author
 from .models import Book
 from django.forms import ModelForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+def index(request, template_name = "weblibrary/base.html"):
+    return render(request, template_name)
+
 def show_all(request,  template_name = "weblibrary/all_lists.html"):
     authors = Author.objects.all()
     books = Book.objects.all()
@@ -15,14 +19,14 @@ def show_all(request,  template_name = "weblibrary/all_lists.html"):
     data['authors'] = authors
     data['books'] = books
     return render(request, template_name, data)
-
+@login_required
 def author_create(request, template_name = "weblibrary/author_form.html"):
     form = AuthorForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect('all_lists')
     return render(request, template_name, {'form':form})
-
+@login_required
 def author_edit(request, pk, template_name = "weblibrary/author_form.html"):
     author = get_object_or_404(Author, pk = pk)
     form = AuthorForm(request.POST or None, instance = author)
@@ -30,21 +34,21 @@ def author_edit(request, pk, template_name = "weblibrary/author_form.html"):
         form.save()
         return redirect('all_lists')
     return render(request, template_name, {'form':form})
-
+@login_required
 def author_delete(request, pk, template_name = "weblibrary/delete.html"):
     author = get_object_or_404(Author, pk = pk)
     if request.method == 'POST':
         author.delete()
         return redirect('all_lists')
     return render(request, template_name, {"object": author})
-
+@login_required
 def book_create(request, template_name = "weblibrary/book_form.html"):
     form = BookForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect('all_lists')
     return render(request, template_name, {'form':form})
-
+@login_required
 def book_edit(request, pk, template_name = "weblibrary/book_form.html"):
     book = get_object_or_404(Book, pk = pk)
     form = BookForm(request.POST or None, instance = book)
@@ -52,7 +56,7 @@ def book_edit(request, pk, template_name = "weblibrary/book_form.html"):
         form.save()
         return redirect('all_lists')
     return render(request, template_name, {'form':form})
-
+@login_required
 def book_delete(request, pk, template_name = "weblibrary/delete.html"):
     book = get_object_or_404(Book, pk = pk)
     if request.method == 'POST':
