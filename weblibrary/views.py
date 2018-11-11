@@ -19,6 +19,7 @@ def show_all(request,  template_name = "weblibrary/all_lists.html"):
     data['authors'] = authors
     data['books'] = books
     return render(request, template_name, data)
+    
 @login_required
 def author_create(request, template_name = "weblibrary/author_form.html"):
     form = AuthorForm(request.POST or None)
@@ -26,6 +27,7 @@ def author_create(request, template_name = "weblibrary/author_form.html"):
         form.save()
         return redirect('all_lists')
     return render(request, template_name, {'form':form})
+
 @login_required
 def author_edit(request, pk, template_name = "weblibrary/author_form.html"):
     author = get_object_or_404(Author, pk = pk)
@@ -34,6 +36,7 @@ def author_edit(request, pk, template_name = "weblibrary/author_form.html"):
         form.save()
         return redirect('all_lists')
     return render(request, template_name, {'form':form})
+
 @login_required
 def author_delete(request, pk, template_name = "weblibrary/delete.html"):
     author = get_object_or_404(Author, pk = pk)
@@ -41,6 +44,7 @@ def author_delete(request, pk, template_name = "weblibrary/delete.html"):
         author.delete()
         return redirect('all_lists')
     return render(request, template_name, {"object": author})
+
 @login_required
 def book_create(request, template_name = "weblibrary/book_form.html"):
     form = BookForm(request.POST or None)
@@ -48,6 +52,7 @@ def book_create(request, template_name = "weblibrary/book_form.html"):
         form.save()
         return redirect('all_lists')
     return render(request, template_name, {'form':form})
+
 @login_required
 def book_edit(request, pk, template_name = "weblibrary/book_form.html"):
     book = get_object_or_404(Book, pk = pk)
@@ -56,6 +61,7 @@ def book_edit(request, pk, template_name = "weblibrary/book_form.html"):
         form.save()
         return redirect('all_lists')
     return render(request, template_name, {'form':form})
+
 @login_required
 def book_delete(request, pk, template_name = "weblibrary/delete.html"):
     book = get_object_or_404(Book, pk = pk)

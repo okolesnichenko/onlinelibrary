@@ -3,6 +3,7 @@
 {% block content %}
 
 <h3><a class = "upper" href = "{% url 'all_lists' %}">Список</a></h3>
+
 <form action = "find_book">
     <p>
       Поиск книги:<input name = "search", type="text", size="40", placeholder= "Введите название книги либо автора">
@@ -48,4 +49,5 @@
   </table>
   <a href="{% url 'book_create' %}">Добавить книгу</a>
 </div>
+
 {% endblock %}
