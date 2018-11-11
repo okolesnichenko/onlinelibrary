@@ -15,7 +15,7 @@ python/django/sqlite3/crud
 <li>Обязательными технологиями являются Python/Django, остальные библиотеки и технологии по усмотрению кандидата.</li>
 
 <h3>Для просмотра необходимо:</h3>
-<li> В директории (/project) выполнить: >>>python manage.py runserver
+<li> В директории (/onlinelibrary) выполнить: >>>python manage.py runserver
 <li> Так как регистрация не реализована (только в /admin/) вход по:</li>
      логин: Test </br>
      пароль: testuser. </br>
