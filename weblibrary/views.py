@@ -62,13 +62,28 @@ def book_delete(request, pk, template_name = "weblibrary/delete.html"):
 
 def book_find(request, template_name = "weblibrary/book_find.html"):
     search = request.GET['search']
-    authors = Author.objects.filter(surname = search)
+    books = []
+    author_n = list(Author.objects.filter(name = search))
+    author_s = list(Author.objects.filter(surname = search))
     book_name = list(Book.objects.filter(name = search))
-    book_author = list(Book.objects.filter(author = authors))
-    if(len(book_author) == 0):
-        books = book_name
-    else:
-        books = book_name + book_author
+    # Full author name + surname
+    x = search.split()
+    if(len(x) == 2):
+        authors = list(Author.objects.filter(name = x[0], surname = x[1]))
+        while(len(authors) != 0):
+            book_author = list(Book.objects.filter(author = authors.pop()))
+            books += book_author
+    # Author name
+    while(len(author_n) != 0):
+        book_author = list(Book.objects.filter(author = author_n.pop()))
+        books += book_author
+    # Author surname
+    while(len(author_s) != 0):
+        book_author = list(Book.objects.filter(author = author_s.pop()))
+        books += book_author
+    # Book name
+    if(len(book_name) != 0):
+        books += book_name
     if request.method == 'GET':
         return render(request, template_name, {'books': books})
     return redirect('all_lists')    

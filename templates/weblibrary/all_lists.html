@@ -5,7 +5,7 @@
 <h3><a class = "upper" href = "{% url 'all_lists' %}">Список</a></h3>
 <form action = "find_book">
     <p>
-      Поиск книги:<input id = "var", name = "search", type="text", size="40">
+      Поиск книги:<input name = "search", type="text", size="40", placeholder= "Введите название книги либо автора">
     </p>
     <input type="submit" value="Искать">
 </form>
@@ -35,13 +35,13 @@
       <th>№ </th>
       <th>Название </th>
       <th>Автор </th>
+      <th></th>
     </tr>
     {% for book in books %}
     <tr>
       <td>{{ book.id }}</td>
       <td>{{ book.name }}</td>
-      <td>{{ book.author.name }}</td>
-      <td>{{ book.author.surname }}</td>
+      <td>{{ book.author }}</td>
       <td><a href="{% url 'book_edit' book.id %}">Изменить</a> | <a href="{% url 'book_delete' book.id %}">Удалить</a></td>
     </tr>
     {% endfor %}
